@@ -1,0 +1,22 @@
+type Query {
+  markers: [Marker]
+}
+
+type Mutation {
+  marker(latitude: Float!, longitude: Float!): Marker!
+}
+
+type Subscription {
+  newMarker: Marker
+}
+
+type Marker {
+  id: ID!
+  location: Location!
+}
+
+type Location {
+  id: ID!
+  latitude: Float!
+  longitude: Float!
+}

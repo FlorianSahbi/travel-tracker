@@ -1,0 +1,12 @@
+type Marker {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  location: Location! @relation(link: INLINE)
+}
+
+type Location {
+  id: ID! @id
+  latitude: Float!
+  longitude: Float!
+}
