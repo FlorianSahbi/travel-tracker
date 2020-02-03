@@ -10,11 +10,13 @@ import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:5000/graphql"
+  uri: "http://floriansahbi.com/graphql"
+  // uri: "http://localhost:5000/graphql"
 });
 
 const wsLink = new WebSocketLink({
-  uri: "wss://localhost:5000/subscriptions",
+  uri: "ws://floriansahbi.com/subscriptions",
+  // uri: "ws://localhost:5000/subscriptions",
   options: {
     reconnect: true
   }
