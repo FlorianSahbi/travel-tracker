@@ -7,8 +7,8 @@ const urlParams = new URLSearchParams(window.location.search);
 const App = () => {
   let [zoom] = useState(urlParams.get("zoom") || 19)
   let [animate] = useState(true)
-  let [position, setPosition] = useState([35.6988262, 139.7713548])
-  let [positionMe, setPositionMe] = useState([35.6988262, 139.7713548])
+  let [position, setPosition] = useState([35.664035, 139.698212])
+  let [positionMe, setPositionMe] = useState([35.664035, 139.698212])
 
   const SUB = gql`
     subscription {
