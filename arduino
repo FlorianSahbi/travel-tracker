@@ -1,0 +1,39 @@
+#include <WiFi.h>
+#include <HTTPClient.h>
+ 
+const char* ssid = "Redmi";
+const char* password =  "hetic2019";
+float latitude = 35.664035;
+float longitude = 139.698212;
+ 
+void setup() {
+  Serial.begin(115200);
+  delay(4000);
+ 
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    WiFi.begin(ssid, password); 
+    Serial.println("Connecting to WiFi..");
+  }
+  Serial.println("Connected to the WiFi network");
+}
+ 
+void loop() {
+ 
+ if(WiFi.status()== WL_CONNECTED){
+   latitude = latitude + 0.000123;
+   Serial.println(latitude, 6);
+   HTTPClient http;   
+   http.begin("https://floriansahbi.com/graphql"); 
+   http.addHeader("Content-Type", "application/json");       
+   http.POST("{ \"query\" : \"mutation M { marker(latitude: "+String(latitude, 6)+", longitude: 139.698212) { location { latitude longitude } } }\" }"); 
+   String response = http.getString();  
+   Serial.println(response); 
+   http.end();
+ 
+ }else{
+    Serial.println("Error in WiFi connection");   
+ }
+ 
+  delay(500);  //Send a request every 10 seconds
+}
