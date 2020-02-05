@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import { useSubscription } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import moment from 'moment-timezone/builds/moment-timezone-with-data';
 
 const urlParams = new URLSearchParams(window.location.search);
 const App = () => {
+
+  console.log(moment.tz(moment(), 'Europe/Paris').format('LT'));
+  console.log(moment.tz(moment(), 'Asia/Tokyo').format('LT'));
   let [zoom] = useState(urlParams.get("zoom") || 19)
   let [animate] = useState(true)
   let [position, setPosition] = useState([35.664035, 139.698212])
